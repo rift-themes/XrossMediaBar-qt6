@@ -1,6 +1,6 @@
-import QtQuick 2.7
-import QtQuick.Layouts 1.1
-import QtGraphicalEffects 1.15
+import QtQuick
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 import "Lists"
 import "utils.js" as Utils
 
@@ -125,26 +125,26 @@ FocusScope {
 		clip: true
 		focus: true
 		
-		Keys.onRightPressed: { 
+		Keys.onRightPressed: function(event) {
             event.accepted = true;
 			navSfx.play();
 			collectionBar.list.incrementCurrentIndex();
-			
+
         }
-		Keys.onLeftPressed: { 
+		Keys.onLeftPressed: function(event) {
             event.accepted = true;
 			navSfx.play();
 			collectionBar.list.decrementCurrentIndex(); //moveElement(-1)
-			
+
         }
-		
-		Keys.onUpPressed: { 
+
+		Keys.onUpPressed: function(event) {
             event.accepted = true;
 			navSfx.play();
 			decrementCurrentIndex();
         }
 		
-		Keys.onDownPressed: { 
+		Keys.onDownPressed: function(event) {
             event.accepted = true;
 			navSfx.play();
 			incrementCurrentIndex();
@@ -229,8 +229,8 @@ FocusScope {
 		}
     }
 	
-	Keys.onPressed: {
-			
+	Keys.onPressed: function(event) {
+
 			if (api.keys.isAccept(event) && !event.isAutoRepeat){
 				event.accepted = true;
 				if ( collectionIdx == -3 ) {

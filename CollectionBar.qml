@@ -1,6 +1,6 @@
-import QtQuick 2.7
-import QtQuick.Layouts 1.1
-import QtGraphicalEffects 1.15
+import QtQuick
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 import "Lists"
 import "utils.js" as Utils
 

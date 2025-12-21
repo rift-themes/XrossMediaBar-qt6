@@ -1,7 +1,7 @@
-import QtQuick 2.7
-import QtQuick.Layouts 1.1
-//import QtGraphicalEffects 1.15
-import QtMultimedia 5.9
+import QtQuick
+import QtQuick.Layouts
+//import Qt5Compat.GraphicalEffects
+import QtMultimedia
 import "Lists"
 import "utils.js" as Utils
 
@@ -136,7 +136,7 @@ FocusScope {
             repeat: true
             running: true
             triggeredOnStart: true
-            onTriggered: sysTime.set()
+            onTriggered: function() { sysTime.set() }
         }
 		
 		color: "white"
@@ -195,7 +195,7 @@ FocusScope {
 		}
 	}
 	
-	Keys.onPressed: {                    
+	Keys.onPressed: function(event) {
 			// Details
 		if (api.keys.isDetails(event) && !event.isAutoRepeat) {
 			event.accepted = true;

@@ -1,7 +1,7 @@
-import QtQuick 2.12
-import QtGraphicalEffects 1.0
-import QtQml.Models 2.10
-import QtQuick.Layouts 1.1
+import QtQuick
+import Qt5Compat.GraphicalEffects
+import QtQml.Models
+import QtQuick.Layouts
 import "Lists"
 import "utils.js" as Utils
 import "qrc:/qmlutils" as PegasusUtils
@@ -150,7 +150,7 @@ id: root
 		
 		
 		
-			Keys.onLeftPressed: { 
+			Keys.onLeftPressed: function(event) {
 				event.accepted = true;
 				exit();
 			}
@@ -255,7 +255,7 @@ id: root
 		
 			fillMode: Image.PreserveAspectFit
 		
-			source: { if (collectionIdx > -3) return currentGame.assets.logo }
+			source: { if (collectionIdx > -3 && currentGame) return currentGame.assets.logo; return "" }
 			visible: collectionIdx > -3 ? true : false
 		}
 	
@@ -281,8 +281,8 @@ id: root
 		}
 	}
 	
-	Keys.onPressed: {
-			
+	Keys.onPressed: function(event) {
+
 			if (api.keys.isAccept(event) && !event.isAutoRepeat){
 				event.accepted = true;
 				if (collectionIdx > -3 ) {
@@ -292,7 +292,7 @@ id: root
 					if (detailedAxis.currentIndex == 1) {
 						root.currentGame.favorite = !root.currentGame.favorite;
 						if (root.collectionIdx == -2) exit();
-					
+
 						if (root.currentGame.favorite) {
 							detailedAxis.model.get(1).tile = "assets/icons/favorite.png"
 							detailedListModel.get(1).description = "Mark as unfavorite";
