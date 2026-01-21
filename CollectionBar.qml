@@ -57,9 +57,9 @@ FocusScope {
         
         function createListElement(element, i) {
             return {
-                name:       element.name,
+                name:       element.shortName,
                 idx:        i,
-                icon:       "assets/icons/" + element.name + ".png",
+                icon:       "assets/icons/" + element.shortName + ".png",
                 background: ""
             }
         }
