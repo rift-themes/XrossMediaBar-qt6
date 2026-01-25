@@ -2,17 +2,44 @@ import QtQuick
 import QtQuick.Layouts
 //import Qt5Compat.GraphicalEffects
 import QtMultimedia
+import Rift 1.0
 import "Lists"
 import "utils.js" as Utils
 
 FocusScope {
+	id: root
+
+	// Hide the global Rift footer - this theme has its own navigation
+	property bool footerVisible: false
+
+	// Menu customization (SELECT, START, Settings) - PS3 XMB dark style
+	property color menuBackgroundColor: "#1a1a1a"
+	property color menuTextColor: "#ffffff"
+	property color menuAccentColor: "#0070d1"
+	property color menuSecondaryColor: "#252525"
+	property color menuBorderColor: "#333333"
+	property real menuBackgroundOpacity: 0.98
+	property string menuFontFamily: generalFont.name
 
 	FontLoader { id: generalFont; source: "assets/fonts/font.ttf" }
 
+	// Theme settings from Rift
+	property string backgroundSetting: Rift.themeSetting("background") ?? "1"
+	property string iconSourceSetting: Rift.themeSetting("iconSource") ?? "0"
+
+	// Listen for real-time setting changes
+	Connections {
+		target: Rift
+		function onThemeSettingChanged(key, value) {
+			if (key === "background") backgroundSetting = value
+			if (key === "iconSource") iconSourceSetting = value
+		}
+	}
+
 	property var settings: {
         return {
-            background:         	api.memory.has("Background") ? "assets/background/xmb-wave-" + api.memory.get("Background") + ".jpg" : "assets/background/xmb-wave-1.jpg",
-            iconSource:             api.memory.has("Icon Source") ? api.memory.get("Icon Source") : "0"
+            background: "assets/background/xmb-wave-" + backgroundSetting + ".jpg",
+            iconSource: iconSourceSetting
         }
     }
 	

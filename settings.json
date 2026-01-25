@@ -1,0 +1,27 @@
+{
+  "settings": [
+    {
+      "key": "background",
+      "label": "Background Wave",
+      "type": "select",
+      "options": [
+        { "value": "1", "label": "Wave 1" },
+        { "value": "2", "label": "Wave 2" },
+        { "value": "3", "label": "Wave 3" },
+        { "value": "4", "label": "Wave 4" },
+        { "value": "5", "label": "Wave 5" }
+      ],
+      "default": "1"
+    },
+    {
+      "key": "iconSource",
+      "label": "Icon Source",
+      "type": "select",
+      "options": [
+        { "value": "0", "label": "Default" },
+        { "value": "1", "label": "Alternative" }
+      ],
+      "default": "0"
+    }
+  ]
+}
