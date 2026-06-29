@@ -9,8 +9,14 @@ import "utils.js" as Utils
 FocusScope {
 	id: root
 
-	// Hide the global Rift footer - this theme has its own navigation
-	property bool footerVisible: false
+	// Show Rift's global footer, styled to match the PS3 XMB palette
+	property bool footerVisible: true
+	property color footerBackgroundColor: menuBackgroundColor
+	property color footerTextColor: menuTextColor
+	property color footerButtonColor: menuAccentColor
+	property color footerButtonTextColor: "#ffffff"
+	property string footerFontFamily: generalFont.name
+	property real footerBackgroundOpacity: 1.0
 
 	// Menu customization (SELECT, START, Settings) - PS3 XMB dark style
 	property color menuBackgroundColor: "#1a1a1a"
