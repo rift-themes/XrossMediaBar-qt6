@@ -27,18 +27,12 @@ FocusScope {
         Component.onCompleted: {
             //clear();
             buildList();
-			collectionAxis.currentIndex = 2;
+			collectionAxis.currentIndex = 1;
         }
 
         function buildList() {
-		    append({
-                "name":         "Settings", 
-                "idx":          -3,
-                "icon":         "assets/icons/settings.png"//,
-                //"background":   "assets/background/xmb-wave-2.jpg"
-            })
 			append({
-                "name":         "Favorites", 
+                "name":         "Favorites",
                 "idx":          -2, 
                 "icon":         "assets/icons/favorites.png"//,
                 //"background":   "assets/background/xmb-wave-2.jpg"
