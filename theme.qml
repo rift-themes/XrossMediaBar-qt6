@@ -197,10 +197,22 @@ FocusScope {
         }
 		focus: true //!gameDetails.focus //true
 		collectionIdx: { if (collectionBar.currentCollection != null) return collectionBar.currentCollection.idx }
-		
+
 		//onSettings: {
 		//	focus = false;
 		//}
+	}
+
+	// Rift integration: keep the SELECT-menu context game in sync with the focused game so
+	// pressing SELECT opens the context menu for the right game (this theme tracks its own cursor).
+	Connections {
+		target: itemBar
+		function onCurrentItemChanged() {
+			if (itemBar.currentItem && itemBar.currentItem.gameId !== undefined && itemBar.currentItem.gameId > 0)
+				Rift.setContextGameById(itemBar.currentItem.gameId)
+			else
+				Rift.contextGame = ({})
+		}
 	}
 
 	GameDetails {
