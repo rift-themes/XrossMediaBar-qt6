@@ -51,7 +51,7 @@ FocusScope {
         
         function createListElement(element, i) {
             return {
-                name:       element.shortName,
+                name:       element.name,   // display name (e.g. "Super Nintendo", not "snes")
                 idx:        i,
                 icon:       "assets/icons/" + element.shortName + ".png",
                 background: ""
